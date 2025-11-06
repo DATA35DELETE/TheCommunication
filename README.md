@@ -1,55 +1,85 @@
-# Proje : İletişim
+# Project: The Communication
 
-İletişim projesi, Tox ile P2P sistemini temel alan bir mesajlaşma platformudur. İletişim, merkeziyetsizliği esas alan ve arada herhangi sunucu olmadan (DHT ve TCP aktarıcı ara sunucularu haric) mesajlaşmayı sağlayan bir CLI yani programıdır.
+The **Communication** project is a messaging platform based on the **Tox** P2P system. It is a **decentralized** command-line interface (CLI) program that allows messaging without any central server (except for DHT and TCP relay nodes).
 
-### Öne Çıkan Özellikleri
-- **Merkeziyetsiz**: Yönlendiriciler hariç tamamiyle P2P'dir. Yönlendiriciler ise sadece mesaj iletimini sağlar. Herhangi bir veri saklama veya okuma sağlayamazlar.
+---
 
-- **Mahremiyet ve Güvenlik(Şifreme)**: Tox'un gücünden gelen bu özellik, tüm mesajlarınızı Curve25519 ve xsalsa20 teknikleri kullanarak üst düzey şifreleme sağlar. Ayrıca mesajlarınız hem İletişim hem de ara sunucular asla mesajınızı göremezler. Bu da mahremiyeti üst düzeye taşır.
+### Key Features
 
-- **CLI Arayüzü**: Basit, anlaşılır ve modern CLI arayüzü vardır. İlerki sürümlerinde GUI arayüzü ile devam edilecektir.
+* **Decentralized**: Apart from relay nodes, it is completely peer-to-peer. Relay nodes only serve to forward messages — they cannot store or read any data.
 
-### Kullanımı
+* **Privacy and Security (Encryption)**: Thanks to the power of Tox, all messages are secured using **Curve25519** and **XSalsa20** encryption. Neither The Communication nor relay nodes can ever see your messages, ensuring maximum privacy.
 
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Programı kullanmak için önce `toxmessenger.exe` dosyasını çalıştırın. Ardından açılan komut satırı ekranında ilk önce kayıt dosyanız var ise yükler, yok ise yeniden kayıt yapar. Sonrasında Bootstrap'lara bağlanır. Şuanlık 5 adet UDP ve TCP ara sunucuları vardır. Sunucular:
-- 85.143.221.42:33445
-- tox.initramfs.io:33445
-- 144.217.167.73:33445
-- tox.abilinski.com:33445
-- tox.novg.net:33445
+* **CLI Interface**: Features a simple, clean, and modern command-line interface. Future versions will include a graphical user interface (GUI).
 
-Ufak bir özet geçer ve kalıcı Tox Id'nizi size bildirir.
+---
 
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Son olarak komutları bildirir ve program kontrolu size bırakır. Komut kullanmak için ise, komut numarısını yazıp kullanabilirsiniz.
+### Usage
 
-### Komutlar ve İşlevleri
+To use the program, first run the `toxmessenger.exe` file.
+When the command-line window opens, it will load your profile if one exists; otherwise, it will create a new one.
+It then connects to the bootstrap nodes. Currently, there are 5 UDP and TCP relay servers:
 
-#### 1 (Tox ID göster)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Tox Id'yı gösterir.
+* 85.143.221.42:33445
+* tox.initramfs.io:33445
+* 144.217.167.73:33445
+* tox.abilinski.com:33445
+* tox.novg.net:33445
 
-#### 2 (Arkadaş ekle)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;İlk önce arkadaş ekliceğiniz kullanıcının kalıcı Id'sini girin. Ardından arkadaş eklerken ne mesajı göndereceğinizi de yazmanız gerekir. Son olarak girilen Id'ye sahip kullanıcı çevrimiçi ise gönderil, çevrimdışı ise istek gönderilemez.
+The program will show a short summary and display your permanent Tox ID.
 
-#### 3 (Mesaj gönderme)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Arkadaş eklenmiş olan Id'nin arkadaş numarını ister. Girilen arkadaş numarısına denk gelen Id'ye mesaj göndereceğiniz metni giriniz. En sonunda ise Id çevrimiçi ise gönderilir (İnternet bağlantısı, hızı etkiliyebilir.) Çevrimdışı ise mesaj gönderilemez.
+Finally, it lists the available commands and gives control to the user.
+To execute a command, simply type its corresponding number.
 
-#### 4 (Arkadaş listesi)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;İstek gönderilmiş Id'lerin listesi
+---
 
-#### 5 (İsim değiştir)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Girilen ismi, kullanıcı ismi olarak alır.
+### Commands and Functions
 
-#### 6 (Profili manuel kaydet)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Profili manuel olarak kayıt eder.
+#### 1 (Show Tox ID)
 
-#### 7 (Profil sil)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Mevcut profili siler ve programı kapatır. Program yeniden başlatıldığında yeni profil oluşur.
+Displays your Tox ID.
 
-#### 8 (Çıkış)
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Programı kapatır.
+#### 2 (Add Friend)
 
-### Derleme
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Derlemeden önce, MSYS2'yi indirmemiz gerekir. Bunun için, [MSYS2](https://www.msys2.org) sitesine gidip, uygun olan sürümü indirlerim. Ve kuralım. Ardından mavi iconlu olan MSYS2 Mingw64 olan uygulamayı çalıştıralım. Gelen konsol ekranına;
+Enter the permanent ID of the user you want to add, followed by a message to send with the friend request.
+If the target user is online, the request will be sent; if offline, it cannot be delivered.
+
+#### 3 (Send Message)
+
+Prompts for the friend number of an already-added contact.
+Enter the message text to send.
+If the contact is online, the message is sent (speed may vary depending on your internet connection).
+If offline, the message cannot be sent.
+
+#### 4 (Friend List)
+
+Lists all friend requests that have been sent.
+
+#### 5 (Change Name)
+
+Sets a new username.
+
+#### 6 (Manually Save Profile)
+
+Saves the current profile manually.
+
+#### 7 (Delete Profile)
+
+Deletes the current profile and exits the program.
+When restarted, a new profile will be created.
+
+#### 8 (Exit)
+
+Closes the program.
+
+---
+
+### Building
+
+Before compiling, you need to install **MSYS2**.
+Go to [MSYS2](https://www.msys2.org), download the appropriate version for your system, and install it.
+Then launch the **MSYS2 Mingw64** terminal (the blue icon) and run:
+
 ```shell
 pacman -S mingw-w64-x86_64-gcc \
           mingw-w64-x86_64-cmake \
@@ -61,48 +91,55 @@ pacman -S mingw-w64-x86_64-gcc \
           git \
           make
 ```
-Paketlerini indirelim. Ardından C-toxcore'u derliyelim;
+
+Next, compile **C-toxcore**:
+
 ```shell
 cd ~
 git clone https://github.com/TokTok/c-toxcore.git
 cd c-toxcore
 
-# Submodule ayarlama
+# Initialize submodules
 git submodule update --init --recursive
 
-# Build klasörü
+# Create build directory
 cd build
 
-# CMake configure
+# Configure CMake
 cmake .. -G "MinGW Makefiles" \
          -DCMAKE_BUILD_TYPE=Release \
          -DCMAKE_INSTALL_PREFIX=/mingw64
 
-# Derle (4 çekirdek ile)
+# Compile (using 4 threads)
 mingw32-make -j4
 
-# Yükle
+# Install
 mingw32-make install
 ```
 
-&ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;Sistemi derlemek için;
+To build the system itself:
+
 ```shell
-# Build klasörüne gitme
+# Go to the build folder
 cd build
 
-# Derleme dosyalarını ayarlama
+# Configure build files
 cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
 
-# 4 çekirdek ile derleme
+# Compile using 4 threads
 mingw32-make -j4
 ```
-Son olarak proje klasöründe `libs` adlı klasörde, programın kullandığı .dll dosyaları bulunmaktadır. Kütüphanleri `toxmessenger.exe` dosyasının bulunduğu klasöre koyulması gerekir.
 
-Ve artık program, derlenmiş oldu.
+In the project directory, there is a `libs` folder containing the required `.dll` libraries.
+Make sure to copy these DLLs into the same directory as `toxmessenger.exe`.
 
-#### Ekran Görünüleri
+Now the program is fully compiled and ready to use.
 
-![resim1](image1.png)
-![resim2](image2.png)
-![resim3](image3.png)
-![resim4](image4.png)
+---
+
+### Screenshots
+
+![image1](image1.png)
+![image2](image2.png)
+![image3](image3.png)
+![image4](image4.png)
