@@ -103,7 +103,7 @@ cd c-toxcore
 git submodule update --init --recursive
 
 # Create build directory
-cd build
+mkdir build && cd build
 
 # Configure CMake
 cmake .. -G "MinGW Makefiles" \
