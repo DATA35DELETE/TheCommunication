@@ -103,7 +103,7 @@ cd c-toxcore
 git submodule update --init --recursive
 
 # Create build directory
-mkdir build && cd build
+cd build
 
 # Configure CMake
 cmake .. -G "MinGW Makefiles" \
@@ -121,7 +121,7 @@ To build the system itself:
 
 ```shell
 # Go to the build folder
-cd build
+mkdir build && cd build
 
 # Configure build files
 cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release
